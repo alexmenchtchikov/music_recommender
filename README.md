@@ -1,4 +1,4 @@
-# Music Recommender
+# Inspiration
 
 A machine learning-based music recommendation system that uses Spotify song data to suggest similar songs based on various features. The system includes both a Python backend for recommendations and a Next.js frontend for a user-friendly interface.
 
