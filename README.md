@@ -76,6 +76,21 @@ A machine learning-based music recommendation system that uses Spotify song data
    ```
    Open http://localhost:3000 in your browser to use the application
 
+## Technology Stack
+
+### Backend
+- Python 3.8+
+- FastAPI
+- scikit-learn
+- pandas
+- numpy
+
+### Frontend
+- Next.js 14.1.0
+- React 18.2.0
+- TypeScript
+- Tailwind CSS 3.4.1
+
 ## How It Works
 
 ### Backend
@@ -89,7 +104,7 @@ The recommendation system works by:
 ### Frontend
 
 The web interface is built with:
-- Next.js 13+ with App Router
+- Next.js with App Router
 - TypeScript for type safety
 - Tailwind CSS for styling
 - Real-time search with debouncing
@@ -98,12 +113,11 @@ The web interface is built with:
 ### Features Used for Recommendations
 
 - Spotify Popularity
-- Spotify Playlist Count
-- Spotify Playlist Reach
-- Track Score
-- YouTube Views
-- TikTok Posts
-- Apple Music Playlist Count
+- Playlist Count
+- Social Media Engagement
+- Audio Features (tempo, energy, danceability, etc.)
+- Release Date
+- Artist Popularity
 
 ## API Endpoints
 
