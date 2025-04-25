@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Music Recommender",
+  title: "Inspiration",
   description: "A machine learning-based music recommendation system",
 };
 
