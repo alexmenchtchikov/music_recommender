@@ -11,6 +11,56 @@ def display_available_songs(data, num_songs=10):
             break
         print(f"{i-1}. {track} by {artist}")
 
+def display_search_results(matches, page_size=10):
+    """Display search results in pages."""
+    total_matches = len(matches)
+    if total_matches == 0:
+        return False
+        
+    current_page = 0
+    total_pages = (total_matches - 1) // page_size + 1
+    
+    while True:
+        start_idx = current_page * page_size
+        end_idx = min(start_idx + page_size, total_matches)
+        
+        print(f"\nShowing results {start_idx + 1}-{end_idx} of {total_matches}:")
+        print("-" * 50)
+        
+        for i, (track, artist) in enumerate(zip(matches.iloc[start_idx:end_idx]['Track'], 
+                                              matches.iloc[start_idx:end_idx]['Artist'])):
+            print(f"{start_idx + i}. {track} by {artist}")
+        
+        if total_pages > 1:
+            print(f"\nPage {current_page + 1} of {total_pages}")
+            print("\nOptions:")
+            print("- Enter a number to select a song")
+            print("- Type 'n' for next page")
+            print("- Type 'p' for previous page")
+            print("- Type 'q' to go back")
+        else:
+            print("\nEnter a number to select a song or 'q' to go back")
+            
+        choice = input("\nYour choice: ").lower()
+        
+        if choice == 'q':
+            return None
+        elif choice == 'n' and current_page < total_pages - 1:
+            current_page += 1
+        elif choice == 'p' and current_page > 0:
+            current_page -= 1
+        else:
+            try:
+                idx = int(choice)
+                if 0 <= idx < total_matches:
+                    return matches.index[idx]
+                else:
+                    print("Invalid song number. Please try again.")
+            except ValueError:
+                print("Invalid input. Please try again.")
+    
+    return None
+
 def get_user_song_choice(data):
     """Get user input for song selection."""
     while True:
@@ -20,8 +70,9 @@ def get_user_song_choice(data):
             print("1. Enter a number from the list above")
             print("2. Search by song name")
             print("3. Search by artist name")
+            print("4. Exit program")
             
-            choice = input("\nEnter your choice (1-3): ")
+            choice = input("\nEnter your choice (1-4): ")
             
             if choice == "1":
                 idx = int(input("\nEnter the number of the song (0-9): "))
@@ -32,31 +83,23 @@ def get_user_song_choice(data):
             elif choice == "2":
                 search_term = input("\nEnter part of the song name: ").lower()
                 matches = data[data['Track'].str.lower().str.contains(search_term, na=False)]
-                if len(matches) > 0:
-                    print("\nMatching songs:")
-                    for i, (track, artist) in enumerate(zip(matches['Track'], matches['Artist'])):
-                        print(f"{i}. {track} by {artist}")
-                    idx = int(input("\nEnter the number of the song you want (0 to cancel): "))
-                    if 0 <= idx < len(matches):
-                        return data.index[data['Track'] == matches.iloc[idx]['Track']].tolist()[0]
-                else:
-                    print("No songs found matching that name.")
+                result = display_search_results(matches)
+                if result is not None:
+                    return result
                     
             elif choice == "3":
                 search_term = input("\nEnter part of the artist name: ").lower()
                 matches = data[data['Artist'].str.lower().str.contains(search_term, na=False)]
-                if len(matches) > 0:
-                    print("\nSongs by matching artists:")
-                    for i, (track, artist) in enumerate(zip(matches['Track'], matches['Artist'])):
-                        print(f"{i}. {track} by {artist}")
-                    idx = int(input("\nEnter the number of the song you want (0 to cancel): "))
-                    if 0 <= idx < len(matches):
-                        return data.index[data['Track'] == matches.iloc[idx]['Track']].tolist()[0]
-                else:
-                    print("No artists found matching that name.")
+                result = display_search_results(matches)
+                if result is not None:
+                    return result
             
+            elif choice == "4":
+                print("\nExiting program...")
+                exit(0)
+                
             else:
-                print("Invalid choice. Please enter 1, 2, or 3.")
+                print("Invalid choice. Please enter 1, 2, 3, or 4.")
                 
         except (ValueError, IndexError):
             print("Invalid input. Please try again.")
