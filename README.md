@@ -1,16 +1,14 @@
 # Music Recommendation System
 
-A machine learning-based music recommendation system that uses Spotify song data to suggest similar songs based on various features including popularity, playlist metrics, and social media engagement. The system includes both a Python backend for recommendations and a Next.js frontend for a user-friendly interface.
+A machine learning-based music recommendation system that uses Spotify song data to suggest similar songs based on various features. The system includes both a Python backend for recommendations and a Next.js frontend for a user-friendly interface.
 
 ## Features
 
-- Uses multiple features from Spotify and other platforms to determine song similarity
+- Uses multiple features from Spotify to determine song similarity
 - Implements cosine similarity-based nearest neighbors algorithm
 - Provides similarity scores for recommendations
 - Modern, responsive web interface
 - Real-time search functionality
-- Interactive recommendation display
-- Supports model saving and loading
 
 ## Project Structure
 
@@ -59,6 +57,7 @@ A machine learning-based music recommendation system that uses Spotify song data
 2. Install Node.js dependencies:
    ```bash
    npm install
+   nvm install 18.17.0
    ```
 
 ## Running the Application
@@ -75,23 +74,6 @@ A machine learning-based music recommendation system that uses Spotify song data
    npm run dev
    ```
    Open http://localhost:3000 in your browser to use the application
-
-## Technology Stack
-
-### Backend
-- Python 3.8+
-- FastAPI
-- scikit-learn
-- pandas
-- numpy
-
-### Frontend
-- Next.js 14.1.0
-- React 18.2.0
-- TypeScript
-- Tailwind CSS 3.4.1
-
-## How It Works
 
 ### Backend
 
@@ -110,28 +92,7 @@ The web interface is built with:
 - Real-time search with debouncing
 - Responsive design for all screen sizes
 
-### Features Used for Recommendations
-
-- Spotify Popularity
-- Playlist Count
-- Social Media Engagement
-- Audio Features (tempo, energy, danceability, etc.)
-- Release Date
-- Artist Popularity
-
 ## API Endpoints
 
 - `GET /search?query=<search_term>` - Search for songs by name or artist
 - `GET /recommendations/{song_id}` - Get similar song recommendations
-
-## Development
-
-To learn more about the technologies used:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API
-- [FastAPI Documentation](https://fastapi.tiangolo.com/) - learn about FastAPI
-- [Scikit-learn Documentation](https://scikit-learn.org/) - learn about the machine learning components
-
-## Contributing
-
-Feel free to submit issues and enhancement requests! 
