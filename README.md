@@ -69,7 +69,3 @@ The recommendation system works by:
 - YouTube Views
 - TikTok Posts
 - Apple Music Playlist Count
-
-## Contributing
-
-Feel free to submit issues and enhancement requests! 
