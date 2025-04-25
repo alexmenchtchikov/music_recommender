@@ -41,7 +41,7 @@ export default function Home() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-4">
-            Music Recommender
+            Inspiration
           </h1>
           <p className="text-lg text-gray-700">
             Find similar songs based on your favorites
