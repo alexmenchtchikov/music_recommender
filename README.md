@@ -59,13 +59,3 @@ The recommendation system works by:
 2. Scaling the features to ensure all metrics have equal weight
 3. Using cosine similarity to find the most similar songs
 4. Providing recommendations based on similarity scores
-
-## Features Used for Recommendations
-
-- Spotify Popularity
-- Spotify Playlist Count
-- Spotify Playlist Reach
-- Track Score
-- YouTube Views
-- TikTok Posts
-- Apple Music Playlist Count
